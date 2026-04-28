@@ -1,4 +1,6 @@
-import { Mail, ExternalLink } from 'lucide-react'
+import { Mail, ExternalLink, Github } from 'lucide-react'
+
+const GITHUB_URL = 'https://github.com/YatingPan/sgrwdh-web'
 
 export default function AboutPage() {
   return (
@@ -120,17 +122,37 @@ export default function AboutPage() {
             When citing the SGRWDH database as a whole, please use:
           </p>
           <blockquote className="bg-background border-l-4 border-primary rounded p-4 text-sm font-serif leading-relaxed text-foreground">
-            van Wijlick, Hendrikus, Wenyi Shang, and Yating Pan. SGRWDH: Sources of the Greco-Roman World and Digital Humanities Database. 2026. https://sgrwdh.vercel.app.
+            van Wijlick, Hendrikus, Wenyi Shang, and Yating Pan. SGRWDH: Sources of the Greco-Roman World and Digital Humanities Database. 2026. https://sgrwdh-web.vercel.app.
           </blockquote>
           <p className="text-foreground leading-relaxed mt-4 mb-4">
             When citing an individual entry, please use the format:
           </p>
           <blockquote className="bg-background border-l-4 border-accent rounded p-4 text-sm font-serif leading-relaxed text-foreground">
-            SGRWDH Database. &ldquo;[Entry Name].&rdquo; Accessed [Date]. https://sgrwdh.vercel.app/[type]/[id].
+            SGRWDH Database. &ldquo;[Entry Name].&rdquo; Accessed [Date]. https://sgrwdh-web.vercel.app/[type]/[id].
           </blockquote>
           <p className="text-muted text-sm mt-4">
             Each author and work detail page has a &ldquo;Cite this entry&rdquo; button that generates a ready-to-copy citation.
           </p>
+        </div>
+      </section>
+
+      {/* Source code */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-primary font-serif mb-4">Source Code</h2>
+        <div className="bg-card rounded-lg border border-border p-6">
+          <p className="text-foreground leading-relaxed mb-3">
+            The web application is open source. Issues and pull requests are welcome.
+          </p>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-accent hover:text-primary underline underline-offset-2 break-all"
+          >
+            <Github size={16} />
+            {GITHUB_URL}
+            <ExternalLink size={12} />
+          </a>
         </div>
       </section>
 

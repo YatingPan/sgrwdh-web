@@ -4,7 +4,7 @@ import { ExternalLink } from 'lucide-react'
 const externalLinks = [
   { label: 'Trismegistos', href: 'https://www.trismegistos.org' },
   { label: 'CIRIS', href: 'https://ciris.bbaw.de' },
-  { label: 'GitHub', href: 'https://github.com' },
+  { label: 'GitHub', href: 'https://github.com/YatingPan/sgrwdh-web' },
 ]
 
 const contributors = [

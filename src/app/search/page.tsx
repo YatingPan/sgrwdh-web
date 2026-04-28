@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Search as SearchIcon, Sparkles } from 'lucide-react'
 import {
-  availableCurators,
   availableSourceTypes,
   searchAll,
 } from '@/lib/data-store'
@@ -44,7 +43,6 @@ export default async function SearchPage({ searchParams }: PageProps) {
   const initialState = {
     q: typeof sp.q === 'string' ? sp.q : '',
     languages: readArrayParam(sp.lang),
-    curators: readArrayParam(sp.curator),
     sourceTypes: readArrayParam(sp.source_type),
     yearMin: readNumberParam(sp.year_min),
     yearMax: readNumberParam(sp.year_max),
@@ -63,7 +61,6 @@ export default async function SearchPage({ searchParams }: PageProps) {
       ? searchAll({
           q: initialState.q,
           languages: initialState.languages,
-          curators: initialState.curators,
           sourceTypes: initialState.sourceTypes,
           yearMin: initialState.yearMin,
           yearMax: initialState.yearMax,
@@ -84,7 +81,6 @@ export default async function SearchPage({ searchParams }: PageProps) {
         <>
           <SearchForm
             initial={initialState}
-            availableCurators={availableCurators}
             availableSourceTypes={availableSourceTypes}
           />
           {standardResults && (

@@ -25,7 +25,6 @@ import {
 interface InitialState {
   q: string
   languages: string[]
-  curators: string[]
   sourceTypes: string[]
   yearMin: number | undefined
   yearMax: number | undefined
@@ -36,7 +35,6 @@ interface InitialState {
 
 interface Props {
   initial: InitialState
-  availableCurators: string[]
   availableSourceTypes: string[]
 }
 
@@ -44,7 +42,6 @@ const LANGUAGES = ['Greek', 'Latin', 'Other']
 
 export default function SearchForm({
   initial,
-  availableCurators,
   availableSourceTypes,
 }: Props) {
   const router = useRouter()
@@ -52,7 +49,6 @@ export default function SearchForm({
 
   const [q, setQ] = useState(initial.q)
   const [languages, setLanguages] = useState<string[]>(initial.languages)
-  const [curators, setCurators] = useState<string[]>(initial.curators)
   const [sourceTypes, setSourceTypes] = useState<string[]>(initial.sourceTypes)
   const [yearMin, setYearMin] = useState<string>(
     initial.yearMin === undefined ? '' : String(initial.yearMin)
@@ -68,7 +64,6 @@ export default function SearchForm({
 
   const [filtersOpen, setFiltersOpen] = useState(
     initial.languages.length > 0 ||
-      initial.curators.length > 0 ||
       initial.sourceTypes.length > 0 ||
       initial.yearMin !== undefined ||
       initial.yearMax !== undefined ||
@@ -87,8 +82,6 @@ export default function SearchForm({
         if (qVal) params.set('q', qVal)
         const langs = next.languages ?? languages
         if (langs.length) params.set('lang', langs.join(','))
-        const curs = next.curators ?? curators
-        if (curs.length) params.set('curator', curs.join(','))
         const sts = next.sourceTypes ?? sourceTypes
         if (sts.length) params.set('source_type', sts.join(','))
         const ymi = next.yearMin ?? (yearMin === '' ? undefined : Number(yearMin))
@@ -103,7 +96,7 @@ export default function SearchForm({
         if (fr) params.set('frag', fr)
         router.replace(`/search?${params.toString()}`, { scroll: false })
       },
-    [q, languages, curators, sourceTypes, yearMin, yearMax, hasTmId, hasCiris, fragmentary, router]
+    [q, languages, sourceTypes, yearMin, yearMax, hasTmId, hasCiris, fragmentary, router]
   )
 
   // Debounce text input
@@ -131,12 +124,6 @@ export default function SearchForm({
     pushParams({ languages: next })
   }
 
-  function toggleCurator(c: string) {
-    const next = curators.includes(c) ? curators.filter((x) => x !== c) : [...curators, c]
-    setCurators(next)
-    pushParams({ curators: next })
-  }
-
   function toggleSourceType(t: string) {
     const next = sourceTypes.includes(t) ? sourceTypes.filter((x) => x !== t) : [...sourceTypes, t]
     setSourceTypes(next)
@@ -146,7 +133,6 @@ export default function SearchForm({
   function clearAll() {
     setQ('')
     setLanguages([])
-    setCurators([])
     setSourceTypes([])
     setYearMin('')
     setYearMax('')
@@ -158,7 +144,6 @@ export default function SearchForm({
 
   const activeFilterCount =
     (languages.length > 0 ? 1 : 0) +
-    (curators.length > 0 ? 1 : 0) +
     (sourceTypes.length > 0 ? 1 : 0) +
     (yearMin !== '' || yearMax !== '' ? 1 : 0) +
     (hasTmId ? 1 : 0) +
@@ -333,28 +318,6 @@ export default function SearchForm({
               </label>
             </div>
           </div>
-
-          {/* Curator */}
-          {availableCurators.length > 0 && (
-            <div>
-              <p className="text-xs font-semibold text-foreground mb-2">Curator</p>
-              <div className="flex flex-wrap gap-1.5">
-                {availableCurators.map((c) => (
-                  <button
-                    key={c}
-                    onClick={() => toggleCurator(c)}
-                    className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                      curators.includes(c)
-                        ? 'bg-primary text-white border-primary'
-                        : 'border-border hover:border-primary/50 text-foreground'
-                    }`}
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Source type */}
           {availableSourceTypes.length > 0 && (

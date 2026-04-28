@@ -4,7 +4,57 @@ A web interface for browsing, searching, and visualising a structured database o
 
 Built as part of the **PKU SGRWDH** course and research project (Peking University Digital Humanities Center, with Dutch partners and the University of Missouri). The dataset is curated by hand by students and supplemented by an LLM agent that drafts new lemmata against the Trismegistos and CIRIS authority files.
 
-> **Live (private preview):** [https://sgrwdh.org](https://sgrwdh.org) — Basic-Auth gated; ask the maintainer for credentials.
+> **Live (private preview):** [https://sgrwdh-web.vercel.app](https://sgrwdh-web.vercel.app) — Basic-Auth gated; ask the maintainer for credentials. The screenshots below show what's behind the gate.
+
+---
+
+## Screenshots
+
+### Homepage / data overview
+
+![Homepage with aggregate counts and language / century distribution](public/screenshot/homepage_dataoverview.png)
+
+The landing page summarises the database at a glance: total authors, works, parts, periods, and sources, plus distribution charts by language and by century.
+
+### Authors and works overviews
+
+| | |
+|---|---|
+| ![Authors overview](public/screenshot/authors_overview.png) | ![Works overview](public/screenshot/works_overview.png) |
+
+Sortable, filterable lists for the two main entity types. Each row links to the detail page.
+
+### Author detail page
+
+![Author detail page — top](public/screenshot/author_example_page_upper.png)
+![Author detail page — bottom](public/screenshot/author_example_page_lower.png)
+
+Each author page shows the biographical summary, lifespan with uncertainty bands, language, external authority links (Trismegistos, CIRIS), the works attributed to that author, and the bibliographic sources that document them.
+
+### Work detail page
+
+![Work detail page — top](public/screenshot/work_example_page_upper.png)
+![Work detail page — bottom](public/screenshot/work_example_page_lower.png)
+
+Each work page links back to its author, shows the synopsis and quoting information, lists parts/fragments, the composition and coverage periods, and all attached sources with one-click Chicago citations.
+
+### Timeline
+
+![Authors and works timeline](public/screenshot/authors_works_timeline.png)
+
+Interactive D3 timeline overlaying author lifespans, work composition periods, and coverage periods on a single zoomable axis.
+
+### Search — faceted filters
+
+![Faceted search with filter panel](public/screenshot/search_filter.png)
+
+Free-text search combined with language, year-range, fragmentary status, external-identifier, and source-type filters. State is mirrored to the URL so any search is shareable.
+
+### Search — Ask AI
+
+![Natural-language conversational search](public/screenshot/ai_search.png)
+
+The "Ask AI" mode answers natural-language questions (e.g. *"Which Latin authors lived in the 1st century BCE?"*) by retrieving relevant rows and composing a sourced narrative answer with DeepSeek.
 
 ---
 
@@ -227,4 +277,3 @@ External authority systems linked from this app — **Trismegistos**, **CIRIS**,
 ## Contact
 
 Maintainer: **Yating Pan** — `panyating0322@gmail.com`
-Course: PKU SGRWDH 2025–2026 Spring (S2)

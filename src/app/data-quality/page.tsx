@@ -49,8 +49,8 @@ export default function DataQualityPage() {
       <p className="text-muted mb-8 leading-relaxed max-w-3xl">
         SGRWDH visualises the source data faithfully — when a record looks
         wrong we flag it here rather than silently fixing it. Each entry
-        below points back to the source file (Qiao Zixin / Jin Ziyan /
-        Jolenta Wong) so the curator can decide whether to correct it.
+        below points back to the underlying record so it can be reviewed
+        and corrected at the source.
       </p>
 
       {dataAnomalies.length === 0 && (
@@ -80,7 +80,6 @@ export default function DataQualityPage() {
                   <div className="flex flex-wrap gap-2 shrink-0">
                     {it.workId && <RecordChip kind="work" id={it.workId} />}
                     {it.authorId && <RecordChip kind="author" id={it.authorId} />}
-                    {it.workId && <CuratorChip workId={it.workId} />}
                   </div>
                 </li>
               ))}
@@ -111,12 +110,3 @@ function RecordChip({ kind, id }: { kind: 'work' | 'author'; id: string }) {
   )
 }
 
-function CuratorChip({ workId }: { workId: string }) {
-  const work = getWorkById(workId)
-  if (!work?.creator) return null
-  return (
-    <span className="text-xs px-2 py-0.5 rounded-full bg-muted/10 text-muted border border-border">
-      curator: {work.creator}
-    </span>
-  )
-}
