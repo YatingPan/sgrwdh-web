@@ -4,7 +4,7 @@ A web interface for browsing, searching, and visualising a structured database o
 
 Built as part of the **PKU SGRWDH** course and research project (Peking University Digital Humanities Center, with Dutch partners and the University of Missouri). The dataset is curated by hand by students and supplemented by an LLM agent that drafts new lemmata against the Trismegistos and CIRIS authority files.
 
-> **Live (private preview):** [https://sgrwdh.org](https://sgrwdh.org) — Basic-Auth gated; ask the maintainer for credentials.
+> **Live (private preview):** [https://sgrwdh.org](https://sgrwdh-web.vercel.app/) — Basic-Auth gated; ask the maintainer for credentials.
 
 ---
 
