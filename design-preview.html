@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SGRWDH Timeline — Design Mockup (combined)</title>
+<style>
+  body { font-family: 'Inter', -apple-system, system-ui, sans-serif; background: #f5f3f0; color: #2c2c2a; margin: 0; padding: 40px; }
+  h1 { font-family: Georgia, serif; color: #1e3a5f; margin: 0 0 8px; }
+  .intro { color: #6b7280; max-width: 900px; margin-bottom: 32px; line-height: 1.6; }
+  .design { background: #fefdfb; border: 1px solid #e5e2dc; border-radius: 12px; padding: 24px 28px 24px; margin-bottom: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .design h2 { font-family: Georgia, serif; color: #1e3a5f; margin: 0 0 6px; font-size: 22px; }
+  .design .blurb { color: #6b7280; font-size: 13px; margin: 0 0 18px; line-height: 1.6; }
+  .legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 12px; color: #6b7280; margin: 16px 0 12px; padding: 12px 14px; background: #f9f8f5; border-radius: 6px; align-items: center; }
+  .legend > span { display: inline-flex; align-items: center; gap: 6px; }
+  svg { display: block; width: 100%; height: auto; }
+  .row-name { font-size: 11px; fill: #2c2c2a; }
+  .axis-label { fill: #6b7280; font-size: 10px; }
+  .palette-strip { display: flex; gap: 8px; margin-bottom: 14px; font-size: 11px; flex-wrap: wrap; }
+  .palette-strip > div { display: flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 4px; background: #f9f8f5; }
+  .palette-strip i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #e5e2dc; }
+  th { color: #1e3a5f; font-weight: 600; background: #f9f8f5; }
+  td.swatch { width: 110px; }
+  td.swatch svg { display: inline-block; vertical-align: middle; width: 90px; height: 22px; }
+  code { background: #f3f0eb; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<h1>Timeline 视觉设计 — 合并方案</h1>
+<p class="intro">
+按你的合成需求重做：<br>
+① 颜色用<b>设计 1 的 Tailwind 调子</b>（鲜亮不发灰）<br>
+② 行内布局用<b>设计 2 的高度梯度 + 上下分行</b>（lifespan 大、composition 中、coverage 末位）<br>
+③ Composition 用<b>同色斜线纹</b>，Coverage 用<b>「<code>|———|</code>」括号符号</b>（不填充）<br>
+④ 三种元素的不确定时间都用<b>同色系更浅的褪色</b>表示（lifespan/composition 是淡色，coverage 是虚线延伸）。
+</p>
+
+
+<!-- ============================================================ -->
+<!-- The combined design                                         -->
+<!-- ============================================================ -->
+<div class="design">
+  <h2>合并设计</h2>
+  <p class="blurb">
+    每行一位作者，行内从上到下依次承载 lifespan / composition / coverage 三类时段。颜色编码语种（红/蓝/灰），形状编码时段类型，一目了然不重叠。
+  </p>
+
+  <div class="palette-strip">
+    <div><i style="background:#dc2626"></i>Greek <code>#dc2626</code></div>
+    <div><i style="background:#2563eb"></i>Latin <code>#2563eb</code></div>
+    <div><i style="background:#475569"></i>Other <code>#475569</code></div>
+  </div>
+
+  <!-- Symbol legend table -->
+  <table>
+    <thead>
+      <tr><th style="width:140px">元素</th><th class="swatch" style="width:130px">符号 (Latin 例)</th><th>含义</th><th>不确定时间</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Lifespan</b></td>
+        <td class="swatch">
+          <svg viewBox="0 0 90 20"><rect x="6" y="4" width="14" height="12" fill="#2563eb" opacity="0.30" rx="2"/><rect x="20" y="4" width="50" height="12" fill="#2563eb" rx="2"/><rect x="70" y="4" width="14" height="12" fill="#2563eb" opacity="0.30" rx="2"/></svg>
+        </td>
+        <td>作者生卒，最显眼的一档（满高实色矩形）</td>
+        <td>两端淡色矩形（同色系 ~30% 不透明）</td>
+      </tr>
+      <tr>
+        <td><b>Composition</b></td>
+        <td class="swatch">
+          <svg viewBox="0 0 90 20"><defs><pattern id="leg-h-latin" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#dbeafe"/><line x1="0" y1="0" x2="0" y2="6" stroke="#2563eb" stroke-width="2"/></pattern></defs><rect x="20" y="7" width="50" height="6" fill="url(#leg-h-latin)" stroke="#2563eb" stroke-width="0.5" rx="1"/></svg>
+        </td>
+        <td>作品被写作的时间，中等高度，同色 <b>斜线纹</b></td>
+        <td>两端使用同色系更淡的斜线纹</td>
+      </tr>
+      <tr>
+        <td><b>Coverage</b></td>
+        <td class="swatch">
+          <svg viewBox="0 0 90 20">
+            <line x1="6" y1="10" x2="20" y2="10" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.55"/>
+            <line x1="20" y1="4" x2="20" y2="16" stroke="#2563eb" stroke-width="2"/>
+            <line x1="20" y1="10" x2="70" y2="10" stroke="#2563eb" stroke-width="1.5"/>
+            <line x1="70" y1="4" x2="70" y2="16" stroke="#2563eb" stroke-width="2"/>
+            <line x1="70" y1="10" x2="84" y2="10" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.55"/>
+          </svg>
+        </td>
+        <td>作品<b>叙述/覆盖</b>的时间区间，括号符 <code>|———|</code></td>
+        <td>两端虚线延伸（淡化同色），形如 <code>--|———|--</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- The actual timeline preview -->
+  <svg viewBox="0 0 900 270" style="margin-top:20px">
+    <defs>
+      <!-- Hatch patterns: composition fills -->
+      <pattern id="hatch-greek" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="#fee2e2"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#dc2626" stroke-width="2"/>
+      </pattern>
+      <pattern id="hatch-latin" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="#dbeafe"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#2563eb" stroke-width="2"/>
+      </pattern>
+      <pattern id="hatch-other" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="#e2e8f0"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#475569" stroke-width="2"/>
+      </pattern>
+    </defs>
+
+    <!-- ===== Axis (year range -600 .. 200 CE; scale = 0.9 px/year, leftPad=140) ===== -->
+    <g>
+      <line x1="140" x2="860" y1="20" y2="20" stroke="#9ca3af"/>
+      <!-- Tick labels -->
+      <text x="230" y="14" class="axis-label" text-anchor="middle">500 BCE</text>
+      <text x="320" y="14" class="axis-label" text-anchor="middle">400 BCE</text>
+      <text x="410" y="14" class="axis-label" text-anchor="middle">300 BCE</text>
+      <text x="500" y="14" class="axis-label" text-anchor="middle">200 BCE</text>
+      <text x="590" y="14" class="axis-label" text-anchor="middle">100 BCE</text>
+      <text x="680" y="14" class="axis-label" text-anchor="middle">0</text>
+      <text x="770" y="14" class="axis-label" text-anchor="middle">100 CE</text>
+      <text x="860" y="14" class="axis-label" text-anchor="middle">200 CE</text>
+      <!-- Grid -->
+      <g stroke="#e5e2dc" stroke-dasharray="2,4">
+        <line x1="230" x2="230" y1="22" y2="260"/>
+        <line x1="320" x2="320" y1="22" y2="260"/>
+        <line x1="410" x2="410" y1="22" y2="260"/>
+        <line x1="500" x2="500" y1="22" y2="260"/>
+        <line x1="590" x2="590" y1="22" y2="260"/>
+        <line x1="680" x2="680" y1="22" y2="260"/>
+        <line x1="770" x2="770" y1="22" y2="260"/>
+        <line x1="860" x2="860" y1="22" y2="260"/>
+      </g>
+    </g>
+
+    <!-- Render each lifespan/composition as ONE continuous bar:
+         outer rect = full span at faint opacity (rounded ends);
+         inner rect = certain core, sharp edges, full opacity.
+         The result is a single shape that simply "darkens" in the middle
+         where the period is certain — no visible seam. -->
+
+    <!-- ============================================================ -->
+    <!-- ROW 1: Ctesias (Greek)                                       -->
+    <!--   Lifespan      441–355 BCE (uncertain start 450–441; uncertain end 360–350)  -->
+    <!--   Composition   Persika 398–380 BCE (uncertain end 380–370)                   -->
+    <!--   Coverage      Persian history 480–401 BCE (certain)                         -->
+    <!-- y_top = 30                                                    -->
+    <!-- ============================================================ -->
+    <text class="row-name" x="132" y="46" text-anchor="end">Ctesias</text>
+    <circle cx="138" cy="42" r="3.5" fill="#dc2626"/>
+    <!-- Lifespan: outer faint full span (-450..-350), inner solid core (-441..-360) -->
+    <rect x="275" y="34" width="90" height="14" fill="#dc2626" opacity="0.30" rx="2"/>
+    <rect x="283" y="34" width="73" height="14" fill="#dc2626"/>
+    <!-- Composition (Persika): outer faint (-398..-370), inner solid (-398..-380) -->
+    <rect x="322" y="52" width="25" height="6" fill="url(#hatch-greek)" rx="1" opacity="0.40"/>
+    <rect x="322" y="52" width="16" height="6" fill="url(#hatch-greek)"/>
+    <!-- Coverage (Persian history): -480..-401 certain |———| -->
+    <line x1="248" y1="62" x2="248" y2="72" stroke="#dc2626" stroke-width="2"/>
+    <line x1="248" y1="67" x2="319" y2="67" stroke="#dc2626" stroke-width="1.5"/>
+    <line x1="319" y1="62" x2="319" y2="72" stroke="#dc2626" stroke-width="2"/>
+
+    <!-- ============================================================ -->
+    <!-- ROW 2: Cato the Elder (Latin)                                 -->
+    <!--   Lifespan      234–149 BCE (certain)                         -->
+    <!--   Composition   De Agri Cultura 160–150 BCE (uncertain end 150–145)  -->
+    <!--   (no coverage)                                               -->
+    <!-- y_top = 80                                                    -->
+    <!-- ============================================================ -->
+    <text class="row-name" x="132" y="96" text-anchor="end">Cato the Elder</text>
+    <circle cx="138" cy="92" r="3.5" fill="#2563eb"/>
+    <!-- Lifespan -->
+    <rect x="469" y="84" width="77" height="14" fill="#2563eb" rx="2"/>
+    <!-- Composition (De Agri Cultura): outer faint (-160..-145), inner solid (-160..-150) -->
+    <rect x="536" y="102" width="14" height="6" fill="url(#hatch-latin)" rx="1" opacity="0.40"/>
+    <rect x="536" y="102" width="9"  height="6" fill="url(#hatch-latin)"/>
+
+    <!-- ============================================================ -->
+    <!-- ROW 3: Frontinus (Latin)                                      -->
+    <!--   Lifespan      35–104 CE (uncertain start 25–35; uncertain end 100–110)  -->
+    <!--   Composition   Strategemata 80–90 CE (certain)               -->
+    <!--   Coverage      military history 300 BCE – 90 CE (uncertain start 350–300)  -->
+    <!-- y_top = 130                                                   -->
+    <!-- ============================================================ -->
+    <text class="row-name" x="132" y="146" text-anchor="end">Frontinus</text>
+    <circle cx="138" cy="142" r="3.5" fill="#2563eb"/>
+    <!-- Lifespan: outer faint (25..110), inner solid (35..100) -->
+    <rect x="703" y="134" width="76" height="14" fill="#2563eb" opacity="0.30" rx="2"/>
+    <rect x="712" y="134" width="58" height="14" fill="#2563eb"/>
+    <!-- Composition (Strategemata) -->
+    <rect x="752" y="152" width="9" height="6" fill="url(#hatch-latin)" stroke="#2563eb" stroke-width="0.5" rx="1"/>
+    <!-- Coverage (military history) -->
+    <line x1="365" y1="167" x2="410" y2="167" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.55"/>
+    <line x1="410" y1="162" x2="410" y2="172" stroke="#2563eb" stroke-width="2"/>
+    <line x1="410" y1="167" x2="761" y2="167" stroke="#2563eb" stroke-width="1.5"/>
+    <line x1="761" y1="162" x2="761" y2="172" stroke="#2563eb" stroke-width="2"/>
+
+    <!-- ============================================================ -->
+    <!-- ROW 4: Apuleius (Other)                                       -->
+    <!--   Lifespan      124–170 CE (uncertain start 120–128)          -->
+    <!--   Composition   Metamorphoses 158–170 CE (certain)            -->
+    <!--   (no coverage)                                               -->
+    <!-- y_top = 180                                                   -->
+    <!-- ============================================================ -->
+    <text class="row-name" x="132" y="196" text-anchor="end">Apuleius</text>
+    <circle cx="138" cy="192" r="3.5" fill="#475569"/>
+    <!-- Lifespan: outer faint (120..170), inner solid (128..170) -->
+    <rect x="788" y="184" width="45" height="14" fill="#475569" opacity="0.30" rx="2"/>
+    <rect x="795" y="184" width="38" height="14" fill="#475569"/>
+    <!-- Composition (Metamorphoses) -->
+    <rect x="822" y="202" width="11" height="6" fill="url(#hatch-other)" stroke="#475569" stroke-width="0.5" rx="1"/>
+
+    <!-- ============================================================ -->
+    <!-- ROW 5: Plutarch (Greek) — multi-coverage example              -->
+    <!--   Lifespan      46–120 CE (uncertain end 120–127)             -->
+    <!--   Composition   Parallel Lives 96–120 CE (uncertain start 96–105) -->
+    <!--   Coverage      Greek + Roman history 530 BCE – 100 CE        -->
+    <!--                 (uncertain start 600–530; uncertain end 100–106)  -->
+    <!-- y_top = 230                                                   -->
+    <!-- ============================================================ -->
+    <text class="row-name" x="132" y="246" text-anchor="end">Plutarch</text>
+    <circle cx="138" cy="242" r="3.5" fill="#dc2626"/>
+    <!-- Lifespan: outer faint (46..127), inner solid (46..120) -->
+    <rect x="721" y="234" width="73" height="14" fill="#dc2626" opacity="0.30" rx="2"/>
+    <rect x="721" y="234" width="67" height="14" fill="#dc2626"/>
+    <!-- Composition: outer faint (96..120), inner solid (105..120) -->
+    <rect x="745" y="252" width="42" height="6" fill="url(#hatch-greek)" rx="1" opacity="0.40"/>
+    <rect x="753" y="252" width="34" height="6" fill="url(#hatch-greek)"/>
+    <!-- Coverage: certain core 530 BCE – 100 CE; uncertain start 600–530; uncertain end 100–106 -->
+    <line x1="140" y1="267" x2="203" y2="267" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.55"/>
+    <line x1="203" y1="262" x2="203" y2="272" stroke="#dc2626" stroke-width="2"/>
+    <line x1="203" y1="267" x2="770" y2="267" stroke="#dc2626" stroke-width="1.5"/>
+    <line x1="770" y1="262" x2="770" y2="272" stroke="#dc2626" stroke-width="2"/>
+    <line x1="770" y1="267" x2="775" y2="267" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.55"/>
+  </svg>
+
+  <p style="font-size: 12px; color: #6b7280; margin-top: 18px; line-height: 1.6;">
+    上图 5 行涵盖了所有边界情况：（1）Ctesias — 双端不确定的 lifespan + 单端不确定的 composition + 完全确定的 coverage；（2）Cato — 完全确定的 lifespan + 单端不确定的 composition、无 coverage；（3）Frontinus — 双端不确定的 lifespan、确定的 composition、单端不确定的 coverage；（4）Apuleius — Other 灰色用例；（5）Plutarch — coverage 双端都有虚线延伸。
+  </p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- Element-level close-up (so you can really see the details)   -->
+<!-- ============================================================ -->
+<div class="design">
+  <h2>放大对照</h2>
+  <p class="blurb">三类元素的细节，依次展示「确定的核心 + 不确定的延伸」如何呈现。</p>
+  <svg viewBox="0 0 900 320">
+    <defs>
+      <pattern id="zoom-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="10" height="10" fill="#dbeafe"/>
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#2563eb" stroke-width="3"/>
+      </pattern>
+    </defs>
+
+    <!-- Lifespan: outer faint full span (45..120), inner solid core (50..110) — one continuous bar -->
+    <text x="20" y="40" class="row-name" font-weight="600">① Lifespan</text>
+    <text x="20" y="58" class="axis-label">Latin author lived c. 50 – 110 CE; uncertain start 45–50, uncertain end 110–120</text>
+    <rect x="100" y="76" width="460" height="28" fill="#2563eb" opacity="0.30" rx="3"/>
+    <rect x="130" y="76" width="370" height="28" fill="#2563eb"/>
+    <text x="115" y="124" class="axis-label" text-anchor="middle">45</text>
+    <text x="130" y="124" class="axis-label" text-anchor="middle">50</text>
+    <text x="500" y="124" class="axis-label" text-anchor="middle">110</text>
+    <text x="560" y="124" class="axis-label" text-anchor="middle">120</text>
+
+    <!-- Composition: outer faint full span (90..105), inner solid (90..100) — one continuous bar -->
+    <text x="20" y="158" class="row-name" font-weight="600">② Composition</text>
+    <text x="20" y="176" class="axis-label">Work composed c. 90 – 100 CE; uncertain end 100–105</text>
+    <rect x="280" y="190" width="300" height="14" fill="url(#zoom-hatch)" rx="2" opacity="0.40"/>
+    <rect x="280" y="190" width="200" height="14" fill="url(#zoom-hatch)"/>
+    <text x="280" y="220" class="axis-label" text-anchor="middle">90</text>
+    <text x="480" y="220" class="axis-label" text-anchor="middle">100</text>
+    <text x="580" y="220" class="axis-label" text-anchor="middle">105</text>
+
+    <!-- Coverage -->
+    <text x="20" y="248" class="row-name" font-weight="600">③ Coverage</text>
+    <text x="20" y="266" class="axis-label">Work covers c. 30 BCE – 80 CE; uncertain start 50–30 BCE, uncertain end 80–90 CE</text>
+    <line x1="100" y1="290" x2="200" y2="290" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3" opacity="0.55"/>
+    <line x1="200" y1="282" x2="200" y2="298" stroke="#2563eb" stroke-width="2.5"/>
+    <line x1="200" y1="290" x2="500" y2="290" stroke="#2563eb" stroke-width="2"/>
+    <line x1="500" y1="282" x2="500" y2="298" stroke="#2563eb" stroke-width="2.5"/>
+    <line x1="500" y1="290" x2="600" y2="290" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3" opacity="0.55"/>
+    <text x="100" y="312" class="axis-label" text-anchor="middle">50 BCE</text>
+    <text x="200" y="312" class="axis-label" text-anchor="middle">30 BCE</text>
+    <text x="500" y="312" class="axis-label" text-anchor="middle">80 CE</text>
+    <text x="600" y="312" class="axis-label" text-anchor="middle">90 CE</text>
+  </svg>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- Composition pattern alternatives                            -->
+<!-- ============================================================ -->
+<div class="design">
+  <h2>Composition 填充对比 — 选一个</h2>
+  <p class="blurb">
+    所有方案使用同一组数据：作品创作于 <b>90 – 100 CE（确定）+ 100 – 105 CE（不确定结束）</b>。同一行内左侧是<b>实际尺寸</b>（高 6px，模拟 timeline 行内大小），右侧是<b>放大版</b>（高 14px，便于看清纹路）。颜色统一 Latin 蓝。
+  </p>
+
+  <svg viewBox="0 0 900 470">
+    <defs>
+      <!-- A: 当前的稀疏斜线 (6px) -->
+      <pattern id="alt-a" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="6" height="6" fill="#dbeafe"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#2563eb" stroke-width="2"/>
+      </pattern>
+      <!-- B: 加密斜线 (3.5px) -->
+      <pattern id="alt-b" width="3.5" height="3.5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="3.5" height="3.5" fill="#dbeafe"/>
+        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#2563eb" stroke-width="1.4"/>
+      </pattern>
+      <!-- C: 圆点 -->
+      <pattern id="alt-c" width="4" height="4" patternUnits="userSpaceOnUse">
+        <rect width="4" height="4" fill="#dbeafe"/>
+        <circle cx="2" cy="2" r="0.9" fill="#2563eb"/>
+      </pattern>
+      <!-- D: 垂直细条 -->
+      <pattern id="alt-d" width="3" height="6" patternUnits="userSpaceOnUse">
+        <rect width="3" height="6" fill="#dbeafe"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#2563eb" stroke-width="1.2"/>
+      </pattern>
+      <!-- E: 网格交叉斜线 -->
+      <pattern id="alt-e" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="5" height="5" fill="#dbeafe"/>
+        <line x1="0" y1="0" x2="0" y2="5" stroke="#2563eb" stroke-width="1.2"/>
+        <line x1="0" y1="0" x2="5" y2="0" stroke="#2563eb" stroke-width="1.2"/>
+      </pattern>
+      <!-- F: 实色 + 斜下方稍深的下边线（轻量斑马感） -->
+      <pattern id="alt-f" width="4" height="4" patternUnits="userSpaceOnUse">
+        <rect width="4" height="4" fill="#93c5fd"/>
+        <line x1="0" y1="2" x2="4" y2="2" stroke="#2563eb" stroke-width="0.6" opacity="0.5"/>
+      </pattern>
+    </defs>
+
+    <!-- Header row -->
+    <text x="20"  y="22" class="row-name" font-weight="600" fill="#1e3a5f">方案</text>
+    <text x="180" y="22" class="row-name" font-weight="600" fill="#1e3a5f">实际尺寸 (h=6px, timeline 行内)</text>
+    <text x="540" y="22" class="row-name" font-weight="600" fill="#1e3a5f">放大版 (h=14px)</text>
+
+    <!-- A: current sparse 6px diagonal -->
+    <text x="20" y="55" class="row-name" font-weight="600">A · 当前 (稀疏斜线 6px)</text>
+    <text x="20" y="71" class="axis-label">基线，目前实装的密度</text>
+    <rect x="180" y="55" width="240" height="6" fill="url(#alt-a)" rx="1" opacity="0.40"/>
+    <rect x="180" y="55" width="160" height="6" fill="url(#alt-a)"/>
+    <rect x="540" y="48" width="300" height="20" fill="url(#alt-a)" rx="2" opacity="0.40"/>
+    <rect x="540" y="48" width="200" height="20" fill="url(#alt-a)"/>
+
+    <!-- B: tighter 3.5px diagonal -->
+    <text x="20" y="115" class="row-name" font-weight="600">B · 加密斜线 (3.5px)</text>
+    <text x="20" y="131" class="axis-label">同样的斜线，密度翻倍</text>
+    <rect x="180" y="115" width="240" height="6" fill="url(#alt-b)" rx="1" opacity="0.40"/>
+    <rect x="180" y="115" width="160" height="6" fill="url(#alt-b)"/>
+    <rect x="540" y="108" width="300" height="20" fill="url(#alt-b)" rx="2" opacity="0.40"/>
+    <rect x="540" y="108" width="200" height="20" fill="url(#alt-b)"/>
+
+    <!-- C: dots -->
+    <text x="20" y="175" class="row-name" font-weight="600">C · 圆点 (4px 间距)</text>
+    <text x="20" y="191" class="axis-label">规则点阵，远看像织物</text>
+    <rect x="180" y="175" width="240" height="6" fill="url(#alt-c)" rx="1" opacity="0.40"/>
+    <rect x="180" y="175" width="160" height="6" fill="url(#alt-c)"/>
+    <rect x="540" y="168" width="300" height="20" fill="url(#alt-c)" rx="2" opacity="0.40"/>
+    <rect x="540" y="168" width="200" height="20" fill="url(#alt-c)"/>
+
+    <!-- D: vertical stripes -->
+    <text x="20" y="235" class="row-name" font-weight="600">D · 垂直细条 (3px)</text>
+    <text x="20" y="251" class="axis-label">书脊/羽毛笔风</text>
+    <rect x="180" y="235" width="240" height="6" fill="url(#alt-d)" rx="1" opacity="0.40"/>
+    <rect x="180" y="235" width="160" height="6" fill="url(#alt-d)"/>
+    <rect x="540" y="228" width="300" height="20" fill="url(#alt-d)" rx="2" opacity="0.40"/>
+    <rect x="540" y="228" width="200" height="20" fill="url(#alt-d)"/>
+
+    <!-- E: cross-hatch -->
+    <text x="20" y="295" class="row-name" font-weight="600">E · 交叉网格</text>
+    <text x="20" y="311" class="axis-label">斜线 × 斜线，最稠密</text>
+    <rect x="180" y="295" width="240" height="6" fill="url(#alt-e)" rx="1" opacity="0.40"/>
+    <rect x="180" y="295" width="160" height="6" fill="url(#alt-e)"/>
+    <rect x="540" y="288" width="300" height="20" fill="url(#alt-e)" rx="2" opacity="0.40"/>
+    <rect x="540" y="288" width="200" height="20" fill="url(#alt-e)"/>
+
+    <!-- F: subtle horizontal stripe in lighter shade (chambray feel) -->
+    <text x="20" y="355" class="row-name" font-weight="600">F · 浅蓝底 + 细横纹</text>
+    <text x="20" y="371" class="axis-label">不靠斜线，靠"浅一档的同色"+ 极细横纹做识别</text>
+    <rect x="180" y="355" width="240" height="6" fill="url(#alt-f)" rx="1" opacity="0.40"/>
+    <rect x="180" y="355" width="160" height="6" fill="url(#alt-f)"/>
+    <rect x="540" y="348" width="300" height="20" fill="url(#alt-f)" rx="2" opacity="0.40"/>
+    <rect x="540" y="348" width="200" height="20" fill="url(#alt-f)"/>
+
+    <!-- Reference: solid for comparison with lifespan -->
+    <text x="20" y="415" class="row-name" font-weight="600">参考 · Lifespan 用的实色（不要选这个！）</text>
+    <text x="20" y="431" class="axis-label">仅用于对比 — composition 不能和 lifespan 一样实色</text>
+    <rect x="180" y="415" width="240" height="6" fill="#2563eb" rx="1" opacity="0.40"/>
+    <rect x="180" y="415" width="160" height="6" fill="#2563eb"/>
+    <rect x="540" y="408" width="300" height="20" fill="#2563eb" rx="2" opacity="0.40"/>
+    <rect x="540" y="408" width="200" height="20" fill="#2563eb"/>
+  </svg>
+
+  <p style="font-size: 12px; color: #6b7280; margin-top: 14px; line-height: 1.6;">
+    建议眯着眼看一下小尺寸（左列）是不是 <b>一眼就能跟 lifespan 实色区分开</b>，且<b>纹路自身不会喧宾夺主</b>。我个人觉得 <b>B（加密斜线）</b> 或 <b>C（圆点）</b> 在 6px 高度下最清晰；E 太花、A 太稀、D 容易和 lifespan 混淆。但你来定。
+  </p>
+</div>
+
+
+<div style="margin-top:32px;padding:18px 24px;background:#fefdfb;border:1px dashed #c8c0b3;border-radius:8px;color:#6b7280;font-size:13px;line-height:1.6;">
+  告诉我用哪个方案 (A/B/C/D/E/F)，我把对应的 pattern 实装到 [Timeline.tsx](src/components/Timeline.tsx)、[EntityTimeline.tsx](src/components/EntityTimeline.tsx) 和 [timeline-style.ts](src/lib/timeline-style.ts)。
+</div>
+
+</body>
+</html>
